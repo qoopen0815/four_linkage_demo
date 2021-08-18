@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot name="demo_model" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find demo_description)/urdf/common.xacro"/>
+  <xacro:include filename="$(find demo_description)/urdf/stick.urdf.xacro"/>
+
+  <link name="base_link"/>
+
+  <xacro:stick parent="base_link" suffix="A">
+    <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+  </xacro:stick>
+
+  <xacro:stick parent="stick_A" suffix="B">
+    <origin xyz="2 0 0" rpy="0 0 0"/>
+  </xacro:stick>
+
+  <xacro:stick parent="stick_B" suffix="C">
+    <origin xyz="2 0 0" rpy="0 0 0"/>
+  </xacro:stick>
+
+  <xacro:stick parent="stick_C" suffix="D">
+    <origin xyz="2 0 0" rpy="0 0 0"/>
+  </xacro:stick>
+
+</robot>

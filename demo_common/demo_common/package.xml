@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>demo_common</name>
+  <version>0.0.1</version>
+  <description>The four linkage model description demo package.</description>
+
+  <maintainer email="ku_engineer_wa@yahoo.com">qoopen0815</maintainer>
+  <license>MIT</license>
+
+  <author email="ku_engineer_wa@yahoo.com">qoopen0815</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+
+</package>
