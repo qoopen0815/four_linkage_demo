@@ -45,6 +45,6 @@
   </node>
 
   <!-- ros_control launch file -->
-  <!-- <include file="$(find echo_bot_gazebo_control)/launch/echo_bot_gazebo_control.launch"/> -->
+  <include file="$(find demo_gazebo_control)/launch/demo_gazebo_control.launch"/>
 
 </launch>

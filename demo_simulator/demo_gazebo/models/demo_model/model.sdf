@@ -11,16 +11,9 @@
       <pose>0 0 0 0 0 0</pose>
     </link>
 
-    <!-- For joint debug -->
-    <joint name="world_to_base_link" type="fixed">
-      <parent>world</parent>
-      <child>base_link</child>
-      <pose>0 0 9 0 0 0</pose>
-    </joint>
-
-    <link name="stick_A">
+    <link name="link_A">
       <self_collide>1</self_collide>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0 0 0 0 0 0.785398185</pose>
       <inertial>
         <mass>0.5</mass>
         <pose>1 0 0 0 0 0</pose>
@@ -34,7 +27,7 @@
           <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
         </inertia>
       </inertial>
-      <visual name="stick_A_visual">
+      <visual name="link_A_visual">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -42,7 +35,7 @@
           </box>
         </geometry>
       </visual>
-      <collision name="stick_A_collision">
+      <collision name="link_A_collision">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -60,9 +53,9 @@
       </collision>
     </link>
 
-    <link name="stick_B">
+    <link name="link_B">
       <self_collide>1</self_collide>
-      <pose>2 0 0 0 0 0</pose>
+      <pose>1.41421356 1.41421356 0 0 0 -0.785</pose>
       <inertial>
         <mass>0.5</mass>
         <pose>1 0 0 0 0 0</pose>
@@ -76,7 +69,7 @@
           <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
         </inertia>
       </inertial>
-      <visual name="stick_B_visual">
+      <visual name="link_B_visual">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -84,7 +77,7 @@
           </box>
         </geometry>
       </visual>
-      <collision name="stick_B_collision">
+      <collision name="link_B_collision">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -102,9 +95,9 @@
       </collision>
     </link>
     
-    <link name="stick_C">
+    <link name="link_C">
       <self_collide>1</self_collide>
-      <pose>4 0 0 0 0 0</pose>
+      <pose>2.82842712 0 0 0 0 -2.355</pose>
       <inertial>
         <mass>0.5</mass>
         <pose>1 0 0 0 0 0</pose>
@@ -118,7 +111,7 @@
           <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
         </inertia>
       </inertial>
-      <visual name="stick_C_visual">
+      <visual name="link_C_visual">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -126,7 +119,7 @@
           </box>
         </geometry>
       </visual>
-      <collision name="stick_C_collision">
+      <collision name="link_C_collision">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -144,9 +137,9 @@
       </collision>
     </link>
 
-    <link name="stick_D">
+    <link name="link_D">
       <self_collide>1</self_collide>
-      <pose>6 0 0 0 0 0</pose>
+      <pose>1.41421356 -1.41421356 0 0 0 -3.925</pose>
       <inertial>
         <mass>0.5</mass>
         <pose>1 0 0 0 0 0</pose>
@@ -160,7 +153,7 @@
           <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
         </inertia>
       </inertial>
-      <visual name="stick_D_visual">
+      <visual name="link_D_visual">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -168,7 +161,7 @@
           </box>
         </geometry>
       </visual>
-      <collision name="stick_D_collision">
+      <collision name="link_D_collision">
         <pose>1 0 0 0 0 0</pose>
         <geometry>
           <box>
@@ -186,42 +179,58 @@
       </collision>
     </link>
 
-    <joint name="base_link_to_stick_A" type="revolute">
+    <joint name="base_link_to_link_A" type="revolute">
       <parent>base_link</parent>
-      <child>stick_A</child>
+      <child>link_A</child>
       <pose>0 0 0 0 0 0</pose>
       <axis>
-        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.785</lower>
+          <upper>0.785</upper>
+          <effort>5.0</effort>
+          <velocity>3.14</velocity>
+        </limit>
+        <xyz>0 0 1</xyz>
         <dynamics/>
       </axis>
     </joint>
 
-    <joint name="stick_A_to_stick_B" type="revolute">
-      <parent>stick_A</parent>
-      <child>stick_B</child>
+    <joint name="link_A_to_link_B" type="revolute">
+      <parent>link_A</parent>
+      <child>link_B</child>
       <pose>0 0 0 0 0 0</pose>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
         <dynamics/>
       </axis>
     </joint>
 
-    <joint name="stick_B_to_stick_C" type="revolute">
-      <parent>stick_B</parent>
-      <child>stick_C</child>
+    <joint name="link_B_to_link_C" type="revolute">
+      <parent>link_B</parent>
+      <child>link_C</child>
       <pose>0 0 0 0 0 0</pose>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
         <dynamics/>
       </axis>
     </joint>
 
-    <joint name="stick_C_to_stick_D" type="revolute">
-      <parent>stick_C</parent>
-      <child>stick_D</child>
+    <joint name="link_C_to_link_D" type="revolute">
+      <parent>link_C</parent>
+      <child>link_D</child>
       <pose>0 0 0 0 0 0</pose>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
+        <dynamics/>
+      </axis>
+    </joint>
+
+    <joint name="close_joint" type="revolute">
+      <parent>link_D</parent>
+      <child>link_A</child>
+      <pose>0 0 0 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
         <dynamics/>
       </axis>
     </joint>
@@ -235,9 +244,9 @@
 
     <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
       <robotNamespace>demo_model</robotNamespace>
-      <jointName>stick_A_to_stick_B, stick_B_to_stick_C, stick_C_to_stick_D</jointName>
-      <!-- Issue : base_link_to_stick_A を追加したらエラーが出る -->
-      <!-- Ignoring transform for child_frame_id "stick_A" from authority "unknown_publisher" because of an invalid quaternion in the transform (nan nan nan nan) -->
+      <jointName>base_link_to_link_A, link_A_to_link_B, link_B_to_link_C, link_C_to_link_D</jointName>
+      <!-- SDF記述メモ："fixed"に設定されたJointはnan値が出力されるのでROS側で下記エラーが出る -->
+      <!-- Ignoring transform for child_frame_id "hoge" from authority "unknown_publisher" because of an invalid quaternion in the transform (nan nan nan nan) -->
     </plugin>
 
   </model>

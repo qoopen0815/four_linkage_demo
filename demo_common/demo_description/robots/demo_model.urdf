@@ -5,7 +5,7 @@
 <!-- =================================================================================== -->
 <robot name="demo_model">
   <link name="base_link"/>
-  <link name="stick_A">
+  <link name="link_A">
     <visual>
       <origin rpy="0 0 0" xyz="1 0 0"/>
       <geometry>
@@ -19,71 +19,83 @@
       </geometry>
     </collision>
   </link>
-  <joint name="base_link_to_stick_A" type="continuous">
+  <link name="link_B">
+    <visual>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2.0 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2. 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="link_C">
+    <visual>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2.0 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2. 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="link_D">
+    <visual>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2.0 0.1 0.1"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="1 0 0"/>
+      <geometry>
+        <box size="2. 0.1 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="base_link_to_link_A" type="revolute">
     <axis xyz="0 0 1"/>
+    <limit effort="100.0" lower="-0.785398185" upper="0.785398185" velocity="3.14159274"/>
+    <dynamics damping="0.1"/>
     <parent link="base_link"/>
-    <child link="stick_A"/>
-    <origin rpy="1.57079637 0 0" xyz="0 0 0"/>
+    <child link="link_A"/>
+    <origin rpy="0 0 0.785398185" xyz="0 0 0"/>
   </joint>
-  <link name="stick_B">
-    <visual>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2.0 0.1 0.1"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2. 0.1 0.1"/>
-      </geometry>
-    </collision>
-  </link>
-  <joint name="stick_A_to_stick_B" type="continuous">
+  <transmission name="base_link_to_stick_A_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_link_to_stick_A">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="base_link_to_stick_A_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  <joint name="link_A_to_link_B" type="continuous">
     <axis xyz="0 0 1"/>
-    <parent link="stick_A"/>
-    <child link="stick_B"/>
-    <origin rpy="0 0 0" xyz="2 0 0"/>
+    <parent link="link_A"/>
+    <child link="link_B"/>
+    <origin rpy="0 0 -1.57079637" xyz="2 0 0"/>
   </joint>
-  <link name="stick_C">
-    <visual>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2.0 0.1 0.1"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2. 0.1 0.1"/>
-      </geometry>
-    </collision>
-  </link>
-  <joint name="stick_B_to_stick_C" type="continuous">
+  <joint name="link_B_to_link_C" type="continuous">
     <axis xyz="0 0 1"/>
-    <parent link="stick_B"/>
-    <child link="stick_C"/>
-    <origin rpy="0 0 0" xyz="2 0 0"/>
+    <parent link="link_B"/>
+    <child link="link_C"/>
+    <origin rpy="0 0 -1.57079637" xyz="2 0 0"/>
   </joint>
-  <link name="stick_D">
-    <visual>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2.0 0.1 0.1"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin rpy="0 0 0" xyz="1 0 0"/>
-      <geometry>
-        <box size="2. 0.1 0.1"/>
-      </geometry>
-    </collision>
-  </link>
-  <joint name="stick_C_to_stick_D" type="continuous">
+  <joint name="link_C_to_link_D" type="continuous">
     <axis xyz="0 0 1"/>
-    <parent link="stick_C"/>
-    <child link="stick_D"/>
-    <origin rpy="0 0 0" xyz="2 0 0"/>
+    <parent link="link_C"/>
+    <child link="link_D"/>
+    <origin rpy="0 0 -1.57079637" xyz="2 0 0"/>
   </joint>
 </robot>
 

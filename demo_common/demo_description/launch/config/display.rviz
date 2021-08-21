@@ -7,7 +7,6 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
-        - /RobotModel1/Status1
         - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
@@ -102,6 +101,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_link:
+          Value: true
         stick_A:
           Value: true
         stick_B:
@@ -117,18 +118,19 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        stick_A:
-          stick_B:
-            stick_C:
-              stick_D:
-                {}
+        base_link:
+          stick_A:
+            stick_B:
+              stick_C:
+                stick_D:
+                  {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: stick_A
+    Fixed Frame: base_link
     Frame Rate: 30
   Name: root
   Tools:
