@@ -63,22 +63,22 @@
       </collision>
     </link>
 
-    <joint name="${parent}_to_link_A" type="revolute">
-      <axis xyz="0 0 1"/>
-      <limit lower="${-M_PI/4}" upper="${M_PI/4}" effort="100.0" velocity="${M_PI}"/>
-      <dynamics damping="0.1"/>
+    <joint name="${parent}_to_link_A" type="fixed">
       <parent link="${parent}"/>
       <child link="link_A"/>
       <xacro:insert_block name="joint_origin"/>
     </joint>
-    <xacro:effort_trans joint="${parent}_to_link_A"/>
 
-    <joint name="link_A_to_link_B" type="continuous">
+    <joint name="link_A_to_link_B" type="revolute">
       <axis xyz="0 0 1"/>
+      <limit lower="${-M_PI/4}" upper="${M_PI/4}" effort="100.0" velocity="${M_PI}"/>
+      <dynamics damping="0.1"/>
       <parent link="link_A"/>
       <child link="link_B"/>
       <origin xyz="2 0 0" rpy="0 0 ${-M_PI/2}"/>
     </joint>
+    <xacro:effort_trans joint="link_A_to_link_B"/>
+
     <joint name="link_B_to_link_C" type="continuous">
       <axis xyz="0 0 1"/>
       <parent link="link_B"/>

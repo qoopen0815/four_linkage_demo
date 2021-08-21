@@ -6,8 +6,7 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" 
         type="spawner" ns="demo_model" output="screen"
-        args="demo_position_controller
-              demo_effort_controller">
+        args="demo_effort_controller">
   </node>
 
   <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui"/>
