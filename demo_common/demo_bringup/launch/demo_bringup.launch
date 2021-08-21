@@ -3,13 +3,13 @@
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <arg name="model" default="$(find demo_description)/robots/demo_model.urdf.xacro"/>
-  <param  name="robot_description" command="$(find xacro)/xacro.py '$(arg model)'"/>
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg model)'"/>
 
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
-  <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
-  <arg name="debug" default="false"/>
 
   <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -20,8 +20,29 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <!-- spawn echo_bot -->
-  <!-- <include file="$(find echo_bot_gazebo)/launch/spawn_echo_bot.launch"/> -->
+  <!-- spawn robot -->
+  <include file="$(find demo_gazebo)/launch/spawn_sdf.launch" >
+    <arg name="robot_name" default="demo_model"/>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="9.0"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+    <arg name="sdf_robot_file" default="$(find demo_gazebo)/models/demo_model/model.sdf"/>
+  </include>
+
+  <arg name="rviz_config" default="$(find demo_description)/launch/config/display.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rviz_config)"/>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find demo_gazebo)/launch/config.yaml" command="load"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher" ns="demo_model"
+        respawn="false" output="screen">
+  </node>
 
   <!-- ros_control launch file -->
   <!-- <include file="$(find echo_bot_gazebo_control)/launch/echo_bot_gazebo_control.launch"/> -->

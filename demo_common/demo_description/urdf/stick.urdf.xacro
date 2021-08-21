@@ -19,7 +19,7 @@
     </link>
 
     <joint name="${parent}_to_stick_${suffix}" type="continuous">
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 1 0"/>
       <parent link="${parent}"/>
       <child link="stick_${suffix}"/>
       <xacro:insert_block name="joint_origin"/>

@@ -7,7 +7,7 @@
   <link name="base_link"/>
 
   <xacro:stick parent="base_link" suffix="A">
-    <origin xyz="0 0 0" rpy="${M_PI/2} 0 ${M_PI/2}"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
   </xacro:stick>
 
   <xacro:stick parent="stick_A" suffix="B">

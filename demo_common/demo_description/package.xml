@@ -2,7 +2,7 @@
 <package format="2">
   <name>demo_description</name>
   <version>0.0.1</version>
-  <description>The four linkage model description demo package.</description>
+  <description>The four linkage model URDF description demo package.</description>
 
   <maintainer email="ku_engineer_wa@yahoo.com">qoopen0815</maintainer>
   <license>MIT</license>

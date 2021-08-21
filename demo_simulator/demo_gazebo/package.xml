@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <name>demo_gazebo</name>
+  <version>1.0.0</version>
+  <description>The demo_gazebo package</description>
+
+  <maintainer email="ku_engineer_wa@yahoo.com">qoopen0815</maintainer>
+  <license>MIT</license>
+
+  <author email="ku_engineer_wa@yahoo.com">qoopen0815</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>roslaunch</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <run_depend>ros_control</run_depend>
+  <!-- <run_depend>gazebo_ros_control</run_depend> -->
+  <run_depend>gazebo_ros</run_depend>
+  <!-- <run_depend>demo_bringup</run_depend> -->
+  <!-- <run_depend>demo_gazebo_control</run_depend> -->
+  <!-- <run_depend>demo_description</run_depend> -->
+  <run_depend>xacro</run_depend>
+
+  <export>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}"/>
+  </export>
+</package>

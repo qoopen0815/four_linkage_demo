@@ -6,6 +6,8 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /RobotModel1
+        - /RobotModel1/Status1
         - /TF1
         - /TF1/Frames1
         - /TF1/Tree1
@@ -100,8 +102,6 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
-          Value: true
         stick_A:
           Value: true
         stick_B:
@@ -117,19 +117,18 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          stick_A:
-            stick_B:
-              stick_C:
-                stick_D:
-                  {}
+        stick_A:
+          stick_B:
+            stick_C:
+              stick_D:
+                {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: base_link
+    Fixed Frame: stick_A
     Frame Rate: 30
   Name: root
   Tools:
@@ -161,17 +160,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 0.8601253032684326
-        Y: 0.6207728981971741
-        Z: 0.48868733644485474
+        X: 1.891975998878479
+        Y: 1.2250310182571411
+        Z: 0.44942033290863037
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.5203983783721924
+      Pitch: 0.41039857268333435
       Target Frame: <Fixed Frame>
-      Yaw: 0.3953947126865387
+      Yaw: 2.160393476486206
     Saved: ~
 Window Geometry:
   Displays:
