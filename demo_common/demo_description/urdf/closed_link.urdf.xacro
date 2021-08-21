@@ -4,7 +4,7 @@
   <xacro:include filename="$(find demo_description)/urdf/common.xacro"/>
   <xacro:include filename="$(find demo_description)/urdf/closed_link.transmission.xacro"/>
 
-  <xacro:macro name="closed_link" params="parent suffix *joint_origin">
+  <xacro:macro name="closed_link" params="parent *joint_origin">
 
     <link name="link_A">
       <visual>

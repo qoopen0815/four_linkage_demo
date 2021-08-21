@@ -6,7 +6,7 @@
 
   <link name="base_link"/>
 
-  <xacro:closed_link parent="base_link" suffix="A">
+  <xacro:closed_link parent="base_link">
     <origin xyz="0 0 0" rpy="0 0 ${M_PI/4}"/>
   </xacro:closed_link>
 
